@@ -13,7 +13,6 @@ import dev.damian.stockcontrol.model.Product;
 import dev.damian.stockcontrol.model.dto.DepositDTO;
 import dev.damian.stockcontrol.model.dto.ItemDTO;
 import dev.damian.stockcontrol.repository.DepositRepository;
-import dev.damian.stockcontrol.repository.ProductRepository;
 
 @Service
 public class DepositService {
@@ -22,7 +21,7 @@ public class DepositService {
 	DepositRepository depositRepository;
 
 	@Autowired
-	ProductRepository productRepository;
+	ProductService productService;
 
 	@Autowired
 	ItemService itemService;
@@ -66,9 +65,7 @@ public class DepositService {
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
 						String.format("Deposit '%s' not found!", depositCode)));
 
-		Product product = productRepository.findByCode(itemDto.getProduct())
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-						String.format("Product '%s' not found!", itemDto.getProduct())));
+		Product product = productService.retrieveByCode(itemDto.getProduct());
 
 		Item item = items.stream().filter(i -> i.getProduct().getCode().equals(itemDto.getProduct())).findFirst()
 				.orElse(new Item(product, location, deposit));
