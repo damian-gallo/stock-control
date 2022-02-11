@@ -1,0 +1,13 @@
+INSERT INTO deposit (id, code) VALUES (1, 'AR01')
+INSERT INTO deposit (id, code) VALUES (2, 'AR02')
+INSERT INTO deposit (id, code) VALUES (3, 'AR03')
+INSERT INTO deposit (id, code) VALUES (4, 'BR01')
+INSERT INTO deposit (id, code) VALUES (5, 'BR02')
+INSERT INTO deposit (id, code) VALUES (6, 'BR03')
+
+INSERT INTO product (id, code) VALUES (1, 'MLA123456789')
+INSERT INTO product (id, code) VALUES (2, 'MLB123456789')
+INSERT INTO product (id, code) VALUES (3, 'MLC123456789')
+INSERT INTO product (id, code) VALUES (4, 'MLD123456789')
+INSERT INTO product (id, code) VALUES (5, 'MLE123456789')
+INSERT INTO product (id, code) VALUES (6, 'MLF123456789')
