@@ -27,10 +27,8 @@ public class DepositService {
 	ItemService itemService;
 
 	public Deposit withdraw(String depositCode, String location, ItemDTO itemDto) {
-		List<Item> items = itemService.retrieveByLocationAndDepositCode(location, depositCode);
-		Item item = items.stream().filter(i -> i.getProduct().getCode().equals(itemDto.getProduct())).findFirst()
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-						String.format("Product '%s' in location '%s' not found!", itemDto.getProduct(), location)));
+		Item item = itemService.retrieveByLocationAndProductCodeAndDepositCode(location, itemDto.getProduct(),
+				depositCode);
 
 		if (exceedsMinQuantity(item, itemDto.getQuantity()))
 			throw new ResponseStatusException(HttpStatus.CONFLICT,
