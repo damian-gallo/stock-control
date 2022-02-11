@@ -33,4 +33,9 @@ public class ProductService {
 		return productRepository.save(product);
 	}
 
+	public Product retrieveByCode(String code) {
+		return productRepository.findByCode(code).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+				String.format("Product '%s' not found!", code)));
+	}
+
 }
