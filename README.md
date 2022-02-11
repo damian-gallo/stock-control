@@ -21,4 +21,4 @@ Once the project is running go to `http://localhost:8080/swagger-ui/index.html` 
 
 ## Database
 
-The project uses an H2 in-memory database and it's seeded by means of the `api/src/main/resources/data.sql` file.
+The project uses an H2 in-memory database and it's automatically seeded by means of the `api/src/main/resources/data.sql` file.
